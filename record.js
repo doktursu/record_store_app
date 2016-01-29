@@ -4,7 +4,7 @@ var Record = function(name, artist, price){
   this.name = name;
   this.artist = artist;
   this.price = price;
-  this.id = _.uniqueId();
+  this.id = 'R' + _.uniqueId();
 };
 
 Record.prototype = {

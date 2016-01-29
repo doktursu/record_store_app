@@ -20,8 +20,7 @@ describe('Record', function(){
     expect(record.id).to.be.a('string');
   });
   it('should be stringifiable', function(){
-    expect(record.stringify()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\t5');
-    console.log(record.stringify());
+    expect(record.stringify()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR5');
   });
 });
 
@@ -39,12 +38,17 @@ describe('Record Store', function(){
     expect(store.balance).to.equal(2000);
   });
   it('should have an empty records inventory', function(){
-    expect(store.inventory).to.deep.equal({});
+    expect(store.inventory).to.deep.equal([]);
   });
   it('should be able to add records and quantities to the inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addRecord(record, 10);
     expect(store.inventory[record.id].record).to.deep.equal(record);
     expect(store.inventory[record.id].quantity).to.equal(10);
+  });
+  it('should be able to list the items in the inventory', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addRecord(record, 10);
+    expect(store.listInventory()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR7\nquant:\t10');
   });
 });

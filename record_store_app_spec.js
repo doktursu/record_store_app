@@ -46,7 +46,7 @@ describe('Store', function(){
     expect(store.inventory[record.id].record).to.deep.equal(record);
     expect(store.inventory[record.id].quantity).to.equal(10);
   });
-  it('should be able to list the items in the inventory', function(){
+  it('should be able to list the entries in the inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addRecord(record, 10);
     var record = new Record('Drift', 'Nosaj Thing', 8.99);
@@ -63,5 +63,12 @@ describe('Store', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addRecord(record);
     expect(store.inventory[record.id].quantity).to.equal(0);
+  });
+  it('should be able to sell records, updating its inventory and balance', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addRecord(record, 10);
+    store.sell(record, 2);
+    expect(store.inventory[record.id].quantity).to.equal(8);
+    expect(store.balance).to.equal(2016);
   });
 });

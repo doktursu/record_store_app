@@ -28,12 +28,10 @@ Store.prototype = {
     console.log(entries);
     return entries;
   },
-  // stringify: function(recordItem){
-  //   var string = '';
-  //   for (prop in recordItem.record) {
-  //     string += prop + ':\t' + recordI
-  //   }
-  // }
+  sell: function(record, quantity){
+    this.inventory[record.id].quantity -= quantity;
+    this.balance += record.price * quantity;
+  },
 
 };
 

@@ -19,10 +19,15 @@ Store.prototype = {
   },
   listInventory: function(){
     var entries = [];
-    for (id in this.inventory) {
+    for(id in this.inventory){
       var entry = this.inventory[id];
-      var quantityString = '\nquant:\t' + entry.quantity;
-      entries.push(entry.item.stringify() + quantityString);
+      var entryString = entry.item.stringify();
+      for(prop in entry){
+        if(prop !== 'item' && typeof entry[prop] !== 'function'){
+          entryString += '\n' + prop.slice(0,6) + ':\t' + entry[prop];
+        }
+      }
+      entries.push(entryString);
     }
     entries = entries.join('\n\n');
     console.log(entries);

@@ -51,7 +51,7 @@ describe('Store', function(){
     store.addItem(record, 10);
     var record = new Record('Drift', 'Nosaj Thing', 8.99);
     store.addItem(record, 10);
-    expect(store.listInventory()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR7\nquant:\t10\n\nname:\tDrift\nartist:\tNosaj Thing\nprice:\t8.99\nid:\tR8\nquant:\t10');
+    expect(store.listInventory()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR7\nquanti:\t10\n\nname:\tDrift\nartist:\tNosaj Thing\nprice:\t8.99\nid:\tR8\nquanti:\t10');
   });
   it('should be able to add quantity to inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);

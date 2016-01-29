@@ -97,4 +97,10 @@ describe('Store', function(){
     var found = store.findItemBy('name', 'Home');
     expect(found[0]).to.deep.equal(record);
   });
+  it('should be able to find item by artist', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 10);
+    var found = store.findItemBy('artist', 'Nosaj Thing');
+    expect(found[0]).to.deep.equal(record);
+  });
 });

@@ -42,33 +42,48 @@ describe('Store', function(){
   });
   it('should be able to add records and quantities to the inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
-    store.addRecord(record, 10);
-    expect(store.inventory[record.id].record).to.deep.equal(record);
+    store.addItem(record, 10);
+    expect(store.inventory[record.id].item).to.deep.equal(record);
     expect(store.inventory[record.id].quantity).to.equal(10);
   });
   it('should be able to list the entries in the inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
-    store.addRecord(record, 10);
+    store.addItem(record, 10);
     var record = new Record('Drift', 'Nosaj Thing', 8.99);
-    store.addRecord(record, 10);
+    store.addItem(record, 10);
     expect(store.listInventory()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR7\nquant:\t10\n\nname:\tDrift\nartist:\tNosaj Thing\nprice:\t8.99\nid:\tR8\nquant:\t10');
   });
   it('should be able to add quantity to inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
-    store.addRecord(record, 10);
-    store.addRecord(record, 8);
+    store.addItem(record, 10);
+    store.addItem(record, 8);
     expect(store.inventory[record.id].quantity).to.equal(18);
   });
   it('should add quantity of 0 when quantity is not passed', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
-    store.addRecord(record);
+    store.addItem(record);
     expect(store.inventory[record.id].quantity).to.equal(0);
+  });
+  it('should be able to check whether an item is in inventory', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 10);
+    var record2 = new Record('Drift', 'Nosaj Thing', 8.99);
+    expect(store.hasItem(record)).to.equal(true);
+    expect(store.hasItem(record2)).to.equal(false);
   });
   it('should be able to sell records, updating its inventory and balance', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
-    store.addRecord(record, 10);
+    store.addItem(record, 10);
     store.sell(record, 2);
     expect(store.inventory[record.id].quantity).to.equal(8);
     expect(store.balance).to.equal(2016);
+  });
+  it('should check whether an item is in stock', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 10);
+    var record2 = new Record('Drift', 'Nosaj Thing', 8.99);
+    store.addItem(record2);
+    expect(store.inStock(record)).to.equal(true);
+    expect(store.inStock(record2)).to.equal(false);
   });
 });

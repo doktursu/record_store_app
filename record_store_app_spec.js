@@ -86,4 +86,9 @@ describe('Store', function(){
     expect(store.inStock(record)).to.equal(true);
     expect(store.inStock(record2)).to.equal(false);
   });
+  it('should be able to caluculate inventory value', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 10);
+    expect(store.inventoryValue()).to.equal(80);
+  })
 });

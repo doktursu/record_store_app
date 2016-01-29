@@ -8,7 +8,7 @@ var Store = function(name, city, balance){
 Store.prototype = {
   addItem: function(item, quantity){
     var quantity = quantity || 0;
-    if(this.inventory[item.id]) {
+    if(this.inventory[item.id]){
       this.inventory[item.id].quantity += quantity;
     }else{
       this.inventory[item.id] = {
@@ -46,7 +46,14 @@ Store.prototype = {
       return true;
     return false;
   },
-
+  inventoryValue: function(){
+    var value = 0;
+    for (key in this.inventory) {
+      var entry = this.inventory[key];
+      value += entry.item.price * entry.quantity;
+    }
+    return value;
+  },
 };
 
 

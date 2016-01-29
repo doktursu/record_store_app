@@ -38,7 +38,7 @@ describe('Store', function(){
     expect(store.balance).to.equal(2000);
   });
   it('should have an empty records inventory', function(){
-    expect(store.inventory).to.deep.equal([]);
+    expect(store.inventory).to.deep.equal({});
   });
   it('should be able to add records and quantities to the inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
@@ -90,5 +90,11 @@ describe('Store', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addItem(record, 10);
     expect(store.inventoryValue()).to.equal(80);
-  })
+  });
+  it('should be able to find item by name', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 10);
+    var found = store.findItemBy('name', 'Home');
+    expect(found[0]).to.deep.equal(record);
+  });
 });

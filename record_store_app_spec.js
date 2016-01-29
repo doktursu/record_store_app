@@ -14,10 +14,16 @@ describe('Record Store', function(){
   beforeEach(function createRecordStore(){
     store = new RecordStore('Kush Records', 'Parsippany', 2000);
   });
-  it('should have a name and city, balance, and records inventory', function(){
+  it('should have a name', function(){
     expect(store.name).to.equal('Kush Records');
+  });
+  it('should have a city', function(){
     expect(store.city).to.equal('Parsippany');
+  });
+  it('should have a balance', function(){
     expect(store.balance).to.equal(2000);
+  });
+  it('should have an empty records inventory', function(){
     expect(store.inventory).to.deep.equal({});
   });
 });

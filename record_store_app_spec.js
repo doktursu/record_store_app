@@ -19,6 +19,10 @@ describe('Record', function(){
   it('should have a uniqueId number', function(){
     expect(record.id).to.be.a('string');
   });
+  it('should be stringifiable', function(){
+    expect(record.stringify()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\t5');
+    console.log(record.stringify());
+  });
 });
 
 describe('Record Store', function(){

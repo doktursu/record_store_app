@@ -37,4 +37,10 @@ describe('Record Store', function(){
   it('should have an empty records inventory', function(){
     expect(store.inventory).to.deep.equal({});
   });
+  it('should be able to add records and quantities to the inventory', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addRecord(record, 10);
+    expect(store.inventory[record.id].record).to.deep.equal(record);
+    expect(store.inventory[record.id].quantity).to.equal(10);
+  });
 });

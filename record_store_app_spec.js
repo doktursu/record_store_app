@@ -4,9 +4,20 @@ var Record = require('./record');
 var RecordStore = require('./record_store');
 
 describe('Record', function(){
-  it('should have a name, artist, and price', function(){
-    var record = new Record('Home', 'Nosaj Thing', 8);
-    expect(record).to.deep.equal({name: 'Home', artist: 'Nosaj Thing', price: 8});
+  beforeEach(function createRecord(){
+    record = new Record('Home', 'Nosaj Thing', 8);
+  });
+  it('should have a name', function(){
+    expect(record.name).to.equal('Home');
+  });
+  it('should have a artist', function(){
+    expect(record.artist).to.equal('Nosaj Thing');
+  });
+  it('should have a price', function(){
+    expect(record.price).to.equal(8);
+  });
+  it('should have a uniqueId number', function(){
+    expect(record.id).to.be.a('string');
   });
 });
 

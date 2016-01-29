@@ -7,6 +7,7 @@ var Store = function(name, city, balance){
 
 Store.prototype = {
   addRecord: function(record, quantity){
+    var quantity = quantity || 0;
     if(this.inventory[record.id]) {
       this.inventory[record.id].quantity += quantity;
     }else{

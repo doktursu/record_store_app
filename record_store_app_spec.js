@@ -59,4 +59,9 @@ describe('Store', function(){
     store.addRecord(record, 8);
     expect(store.inventory[record.id].quantity).to.equal(18);
   });
+  it('should add quantity of 0 when quantity is not passed', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addRecord(record);
+    expect(store.inventory[record.id].quantity).to.equal(0);
+  });
 });

@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 
 var Record = require('./record');
-var RecordStore = require('./record_store');
+var Store = require('./record_store');
 
 describe('Record', function(){
   beforeEach(function createRecord(){
@@ -24,9 +24,9 @@ describe('Record', function(){
   });
 });
 
-describe('Record Store', function(){
+describe('Store', function(){
   beforeEach(function createRecordStore(){
-    store = new RecordStore('Kush Records', 'Parsippany', 2000);
+    store = new Store('Kush Records', 'Parsippany', 2000);
   });
   it('should have a name', function(){
     expect(store.name).to.equal('Kush Records');

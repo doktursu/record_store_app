@@ -1,11 +1,11 @@
-var RecordStore = function(name, city, balance){
+var Store = function(name, city, balance){
   this.name = name;
   this.city = city;
   this.balance = balance;
   this.inventory = [];
 };
 
-RecordStore.prototype = {
+Store.prototype = {
   addRecord: function(record, quantity){
     if(this.inventory[record.id]) {
       this.inventory[record.id].quantity += quantity;
@@ -37,4 +37,4 @@ RecordStore.prototype = {
 };
 
 
-module.exports = RecordStore;
+module.exports = Store;

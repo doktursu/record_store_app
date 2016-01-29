@@ -25,7 +25,7 @@ describe('Record', function(){
 });
 
 describe('Store', function(){
-  beforeEach(function createRecordStore(){
+  beforeEach(function createStore(){
     store = new Store('Kush Records', 'Parsippany', 2000);
   });
   it('should have a name', function(){
@@ -49,6 +49,8 @@ describe('Store', function(){
   it('should be able to list the items in the inventory', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addRecord(record, 10);
-    expect(store.listInventory()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR7\nquant:\t10');
+    var record = new Record('Drift', 'Nosaj Thing', 8.99);
+    store.addRecord(record, 10);
+    expect(store.listInventory()).to.equal('name:\tHome\nartist:\tNosaj Thing\nprice:\t8\nid:\tR7\nquant:\t10\n\nname:\tDrift\nartist:\tNosaj Thing\nprice:\t8.99\nid:\tR8\nquant:\t10');
   });
 });

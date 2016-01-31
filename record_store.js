@@ -59,6 +59,9 @@ Store.prototype = {
     }
     return value;
   },
+  reportFinance: function(){
+    return this.balance + this.inventoryValue();
+  },
   findItemBy: function(prop, value){
     var results = [];
     for(id in this.inventory){

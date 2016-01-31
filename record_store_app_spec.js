@@ -91,6 +91,14 @@ describe('Store', function(){
     store.addItem(record, 10);
     expect(store.inventoryValue()).to.equal(80);
   });
+  it('should be able to report financial situation of store', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 10);
+    var record2 = new Record('Home', 'Rudimental', 7);
+    store.addItem(record2, 1);
+    store.sell(record, 2);
+    expect(store.reportFinance()).to.equal(2087);
+  });
   it('should be able to find item by name', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addItem(record, 10);

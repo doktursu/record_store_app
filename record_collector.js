@@ -6,10 +6,10 @@ var RecordCollector = function(name, city, balance){
 
 RecordCollector.prototype = Object.create(Store.prototype);
 
-RecordCollector.prototype = {
-  buyItem: function(record, quantity){
-    // this.addItem
-  }
+RecordCollector.prototype.buyItem = function(item, quantity){
+  this.addItem(item, quantity);
+  this.balance -= item.price * quantity;
 };
+
 
 module.exports = RecordCollector;

@@ -129,10 +129,24 @@ describe('Record Collector', function(){
   it('should have a name', function(){
     expect(collector.name).to.equal('Joe');
   });
+  it('should have a city', function(){
+    expect(collector.city).to.equal('Boonton');
+  });
   it('should have a balance', function(){
     expect(collector.balance).to.equal(100);
   });
   it('should have an empty record collection', function(){
     expect(collector.inventory).to.deep.equal({});
   });
+  it('should be able to sell records, updating its inventory and balance', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    collector.addItem(record, 10);
+    collector.sell(record, 2);
+    expect(collector.inventory[record.id].quantity).to.equal(8);
+    expect(collector.balance).to.equal(116);
+  });
+  // it('should be able to buy records, updating its inventory and balance', function(){
+  //   var record = new Record('Home', 'Nosaj Thing', 8);
+  //   collec
+  // });
 });

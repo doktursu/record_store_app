@@ -145,8 +145,11 @@ describe('Record Collector', function(){
     expect(collector.inventory[record.id].quantity).to.equal(8);
     expect(collector.balance).to.equal(116);
   });
-  // it('should be able to buy records, updating its inventory and balance', function(){
-  //   var record = new Record('Home', 'Nosaj Thing', 8);
-  //   collec
-  // });
+  it('should be able to buy records, updating its inventory and balance', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    collector.buyItem(record, 3);
+    expect(collector.inventory[record.id].item).to.equal(record);
+    expect(collector.inventory[record.id].quantity).to.equal(3);
+    expect(collector.balance).to.equal(76);
+  });
 });

@@ -7,12 +7,9 @@ var RecordCollector = function(name, city, balance){
 RecordCollector.prototype = Object.create(Store.prototype);
 
 RecordCollector.prototype = {
-  addRecord: function(record, quantity){
-
+  buyItem: function(record, quantity){
+    // this.addItem
   }
-  // buyRecord: function(record, quantity){
-
-  // };
 };
 
 module.exports = RecordCollector;

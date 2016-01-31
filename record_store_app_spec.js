@@ -124,7 +124,7 @@ describe('Store', function(){
 
 describe('Record Collector', function(){
   beforeEach(function createCollector(){
-    collector = new RecordCollector('Joe', 100);
+    collector = new RecordCollector('Joe', 'Boonton', 100);
   })
   it('should have a name', function(){
     expect(collector.name).to.equal('Joe');
@@ -133,6 +133,6 @@ describe('Record Collector', function(){
     expect(collector.balance).to.equal(100);
   });
   it('should have an empty record collection', function(){
-    expect(collector.collection).to.deep.equal({});
+    expect(collector.inventory).to.deep.equal({});
   });
 });

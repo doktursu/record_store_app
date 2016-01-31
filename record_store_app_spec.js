@@ -2,6 +2,7 @@ var expect = require('chai').expect;
 
 var Record = require('./record');
 var Store = require('./record_store');
+var RecordCollector = require('./record_collector');
 
 describe('Record', function(){
   beforeEach(function createRecord(){
@@ -118,5 +119,20 @@ describe('Store', function(){
     store.addItem(record2, 1);
     var found = store.findItemBy('name', 'Home');
     expect(found).to.deep.equal([record, record2]);
+  });
+});
+
+describe('Record Collector', function(){
+  beforeEach(function createCollector(){
+    collector = new RecordCollector('Joe', 100);
+  })
+  it('should have a name', function(){
+    expect(collector.name).to.equal('Joe');
+  });
+  it('should have a balance', function(){
+    expect(collector.balance).to.equal(100);
+  });
+  it('should have an empty record collection', function(){
+    expect(collector.collection).to.deep.equal({});
   });
 });

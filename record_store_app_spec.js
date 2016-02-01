@@ -79,6 +79,13 @@ describe('Store', function(){
     expect(store.inventory[record.id].quantity).to.equal(8);
     expect(store.balance).to.equal(2016);
   });
+  it('should not be able to oversell an item', function(){
+    var record = new Record('Home', 'Nosaj Thing', 8);
+    store.addItem(record, 2);
+    store.sell(record, 4);
+    expect(store.inventory[record.id].quantity).to.equal(2);
+    expect(store.balance).to.equal(2000);
+  });
   it('should check whether an item is in stock', function(){
     var record = new Record('Home', 'Nosaj Thing', 8);
     store.addItem(record, 10);

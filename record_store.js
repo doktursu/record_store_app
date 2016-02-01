@@ -49,7 +49,7 @@ Store.prototype = {
     return entries;
   },
   sell: function(item, quantity){
-    if(this.inventory[item.id]){
+    if(this.inventory[item.id] && this.inventory[item.id].quantity >= quantity){
       this.inventory[item.id].quantity -= quantity;
       this.balance += item.price * quantity;
     }
